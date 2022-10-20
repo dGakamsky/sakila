@@ -15,9 +15,12 @@ public class SakilaApplication {
 	@Autowired
 
 	private ActorRepository actorRepo;
+	private MovieRepository movieRepo;
 
-	public SakilaApplication(ActorRepository exActorRepo){
+	public SakilaApplication(ActorRepository exActorRepo, MovieRepository exMovieRepo){
+
 		this.actorRepo = exActorRepo;
+		this.movieRepo = exMovieRepo;
 	}
 
 
@@ -33,6 +36,10 @@ public class SakilaApplication {
 	Iterable<Actor> getAllActors(){
 		return actorRepo.findAll();
 	}
+
+	@GetMapping("/allMovies")
+	public @ResponseBody
+	Iterable<Movie> getAllMovies() { return movieRepo.findAll();}
 
 
 }
