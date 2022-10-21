@@ -15,17 +15,13 @@ public class SakilaApplication {
 	@Autowired
 
 	private ActorRepository actorRepo;
-	private MovieRepository movieRepo;
+	private FilmRepository filmRepo;
 
-	public SakilaApplication(ActorRepository exActorRepo, MovieRepository exMovieRepo){
+	public SakilaApplication(ActorRepository exActorRepo, FilmRepository exFilmRepo){
 
 		this.actorRepo = exActorRepo;
-		this.movieRepo = exMovieRepo;
+		this.filmRepo = exFilmRepo;
 	}
-
-
-
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaApplication.class, args);
@@ -39,7 +35,7 @@ public class SakilaApplication {
 
 	@GetMapping("/allMovies")
 	public @ResponseBody
-	Iterable<Movie> getAllMovies() { return movieRepo.findAll();}
+	Iterable<Film> getAllMovies() { return filmRepo.findAll();}
 
 
 }
