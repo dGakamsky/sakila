@@ -1,2 +1,6 @@
-package sakila_api.sakila;public class StoreTest {
+package sakila_api.sakila;
+
+public class StoreTest {
+
+
 }
