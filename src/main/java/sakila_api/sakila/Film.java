@@ -85,7 +85,7 @@ public class Film {
 
     public int getLanguage_id(){return this.language_id;}
 
-    public double getRental_duration(){return this.rental_duration;}
+    public int getRental_duration(){return this.rental_duration;}
 
     public double getRental_rate(){return this.rental_rate;}
 
