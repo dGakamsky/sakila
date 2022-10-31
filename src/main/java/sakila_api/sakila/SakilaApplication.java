@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootApplication
 @RestController
 @CrossOrigin
@@ -30,6 +33,9 @@ public class SakilaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaApplication.class, args);
 	}
+
+
+	/* actor table methods */
 
 	@GetMapping("/allActors")
 	public @ResponseBody
@@ -74,12 +80,27 @@ public class SakilaApplication {
 		return actorRepo.save(actor);
 	}
 
+	@DeleteMapping("/allActors/{id}")
+	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") int actorId)
+			throws ResourceNotFoundException {
+		Actor actor = actorRepo.findById(actorId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + actorId));
+
+		actorRepo.delete(actor);
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		return response;
+	}
+
+
+	/* film table methods */
 	@GetMapping("/allFilms")
 	public @ResponseBody
 	Iterable<Film> getAllFilms() { return filmRepo.findAll();}
 
 
 
+	/* store table methods */
 	@GetMapping("/allStores")
 	public @ResponseBody
 	Iterable<Store> getAllStores() {return storeRepo.findAll();}
