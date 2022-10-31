@@ -65,8 +65,8 @@ public class SakilaApplication {
 		actor.setActorFirstName(actorDetails.getActorFirstName());
 		actor.setActorLastName(actorDetails.getActorLastName());
 
-		actorRepo.save(updateActor());
-		return ResponseEntity.ok(updateActor());
+		actorRepo.save(actor);
+		return ResponseEntity.ok(actor);
 	}
 
 	@PostMapping("/allActors")
