@@ -1,5 +1,6 @@
 package sakila_api.sakila;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="film")
@@ -41,6 +42,11 @@ public class Film {
 
     @Column(name = "special_features")
     String special_features;
+
+
+    /* relations */
+    @ManyToMany (mappedBy = "starredFilms")
+    Set<Actor> actorsInMovie;
 
     //constructors
 

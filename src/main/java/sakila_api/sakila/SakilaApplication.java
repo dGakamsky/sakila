@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SpringBootApplication
@@ -162,6 +163,25 @@ public class SakilaApplication {
 	@GetMapping("/allStores")
 	public @ResponseBody
 	Iterable<Store> getAllStores() {return storeRepo.findAll();}
+
+
+
+	/* search films by actor methods */
+	@GetMapping("/filmsByActor/{id}")
+	public List<Film> getFilmsByActor(@PathVariable(value = "id") int actorId){
+		return filmRepo.getFilmsByActor(actorId);
+	}
+
+	@GetMapping("/actorsByFilm/{id}")
+	public List<Actor> getActorsByFilm(@PathVariable(value = "id") int filmId){
+		return actorRepo.getActorsByFilm(filmId);
+	}
+
+	@GetMapping("/actorsByActor/{id}")
+	public List<Actor> getActorsByActor(@PathVariable(value = "id") int filmId){
+		return actorRepo.getActorsByFilm(filmId);
+	}
+
 
 
 }
