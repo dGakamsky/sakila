@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @SpringBootApplication
 @RestController
@@ -54,9 +55,9 @@ public class SakilaApplication {
 
 	@PatchMapping("/allActors/{id}/{firstName}")
 	public ResponseEntity<Actor> updateEmployeePartially(@PathVariable int id, @PathVariable String firstName) {
-		if (filmRepo.findById(id).isPresent()) {
-
-			Actor actor = actorRepo.findById(id).get();
+		Optional<Actor> value = actorRepo.findById(id);
+		if (value.isPresent()) {
+			Actor actor = value.get();
 			actor.setActorFirstName(firstName);
 			return new ResponseEntity<Actor>(actorRepo.save(actor), HttpStatus.OK);
 		} else {
@@ -111,8 +112,9 @@ public class SakilaApplication {
 	@PatchMapping("/allFilms/{id}/{title}")
 	public ResponseEntity<Film> updateFilmPartially(@PathVariable int id, @PathVariable String title) {
 
-			if (filmRepo.findById(id).isPresent()) {
-				Film film = filmRepo.findById(id).get();
+			Optional<Film> value = filmRepo.findById(id);
+			if (value.isPresent()) {
+				Film film = value.get();
 				film.setTitle(title);
 				return new ResponseEntity<Film>(filmRepo.save(film), HttpStatus.OK);
 			} else {
