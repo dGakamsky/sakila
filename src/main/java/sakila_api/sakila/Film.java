@@ -101,7 +101,7 @@ public class Film {
 
     public String getRating(){return this.rating;}
 
-    public String getSpecial_features(){return this.rating;}
+    public String getSpecial_features(){return this.special_features;}
 
     public void setDescription(String description) {
         this.description = description;
