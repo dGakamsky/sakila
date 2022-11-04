@@ -108,7 +108,7 @@ public class SakilaApplication {
 	public ResponseEntity<Film> getFilmById(@PathVariable(value = "id") int filmId)
 			throws ResourceNotFoundException {
 		Film film = filmRepo.findById(filmId)
-				.orElseThrow(() -> new ResourceNotFoundException("Film not found for this id :: " + filmId));
+				.orElseThrow(() -> new ResourceNotFoundException(filmIdErrorMessage + filmId));
 		return ResponseEntity.ok().body(film);
 	}
 
@@ -129,7 +129,7 @@ public class SakilaApplication {
 	public ResponseEntity<Film> updateFilm(@PathVariable(value = "id") int filmId,
 											 @RequestBody FilmDummy newFilmDetails) throws ResourceNotFoundException {
 		Film film = filmRepo.findById(filmId)
-				.orElseThrow(() -> new ResourceNotFoundException("Film not found for this id :: " + filmId));
+				.orElseThrow(() -> new ResourceNotFoundException(filmIdErrorMessage + filmId));
 		Film filmDetails = newFilmDetails.mapToFilm();
 		film.setTitle(filmDetails.getTitle());
 		film.setDescription(filmDetails.getDescription());
@@ -163,14 +163,10 @@ public class SakilaApplication {
 		return response;
 	}
 
-
-
 	/* store table methods */
 	@GetMapping("/allStores")
 	public @ResponseBody
 	Iterable<Store> getAllStores() {return storeRepo.findAll();}
-
-
 
 	/* search films by actor methods */
 	@GetMapping("/filmsByActor/{id}")
