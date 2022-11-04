@@ -67,20 +67,20 @@ public class SakilaApplication {
 
 	@PutMapping("/allActors/{id}")
 	public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorId,
-												   @RequestBody Actor actorDetails) throws ResourceNotFoundException {
+												   @RequestBody ActorDummy actorDetails) throws ResourceNotFoundException {
 		Actor actor = actorRepo.findById(actorId)
 				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + actorId));
 
-		actor.setActorFirstName(actorDetails.getActorFirstName());
-		actor.setActorLastName(actorDetails.getActorLastName());
+		actor.setActorFirstName(actorDetails.mapToActor().getActorFirstName());
+		actor.setActorLastName(actorDetails.mapToActor().getActorLastName());
 
 		actorRepo.save(actor);
 		return ResponseEntity.ok(actor);
 	}
 
 	@PostMapping("/allActors")
-	public Actor createActor(@RequestBody Actor actor) {
-		return actorRepo.save(actor);
+	public Actor createActor(@RequestBody ActorDummy actor) {
+		return actorRepo.save(actor.mapToActor());
 	}
 
 	@DeleteMapping("/allActors/{id}")
@@ -124,10 +124,10 @@ public class SakilaApplication {
 
 	@PutMapping("/allFilms/{id}")
 	public ResponseEntity<Film> updateFilm(@PathVariable(value = "id") int filmId,
-											 @RequestBody Film filmDetails) throws ResourceNotFoundException {
+											 @RequestBody FilmDummy newFilmDetails) throws ResourceNotFoundException {
 		Film film = filmRepo.findById(filmId)
 				.orElseThrow(() -> new ResourceNotFoundException("Film not found for this id :: " + filmId));
-
+		Film filmDetails = newFilmDetails.mapToFilm();
 		film.setTitle(filmDetails.getTitle());
 		film.setDescription(filmDetails.getDescription());
 		film.setLength(filmDetails.getLength());
@@ -143,8 +143,9 @@ public class SakilaApplication {
 	}
 
 	@PostMapping("/allFilms")
-	public Film createFilm(@RequestBody Film film) {
-		return filmRepo.save(film);
+	public Film createFilm(@RequestBody FilmDummy film) {
+		Film newFilm = film.mapToFilm();
+		return filmRepo.save(newFilm);
 	}
 
 	@DeleteMapping("/allFilms/{id}")
