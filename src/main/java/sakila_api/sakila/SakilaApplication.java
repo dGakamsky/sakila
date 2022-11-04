@@ -25,6 +25,9 @@ public class SakilaApplication {
 	private FilmRepository filmRepo;
 	private StoreRepository storeRepo;
 
+	String actorIdErrorMessage = "Actor not found for this id :: ";
+	String filmIdErrorMessage = "Film not found for this id :: ";
+
 	public SakilaApplication(ActorRepository exActorRepo, FilmRepository exFilmRepo, StoreRepository exStoreRepo){
 
 		this.actorRepo = exActorRepo;
@@ -49,7 +52,7 @@ public class SakilaApplication {
 	public ResponseEntity<Actor> getActorById(@PathVariable(value = "id") int actorId)
 			throws ResourceNotFoundException {
 		Actor actor = actorRepo.findById(actorId)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + actorId));
+				.orElseThrow(() -> new ResourceNotFoundException(actorIdErrorMessage + actorId));
 		return ResponseEntity.ok().body(actor);
 	}
 
@@ -69,7 +72,7 @@ public class SakilaApplication {
 	public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorId,
 												   @RequestBody ActorDummy actorDetails) throws ResourceNotFoundException {
 		Actor actor = actorRepo.findById(actorId)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + actorId));
+				.orElseThrow(() -> new ResourceNotFoundException(actorIdErrorMessage + actorId));
 
 		actor.setActorFirstName(actorDetails.mapToActor().getActorFirstName());
 		actor.setActorLastName(actorDetails.mapToActor().getActorLastName());
@@ -87,7 +90,7 @@ public class SakilaApplication {
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") int actorId)
 			throws ResourceNotFoundException {
 		Actor actor = actorRepo.findById(actorId)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + actorId));
+				.orElseThrow(() -> new ResourceNotFoundException(actorIdErrorMessage + actorId));
 
 		actorRepo.delete(actor);
 		Map<String, Boolean> response = new HashMap<>();
@@ -152,7 +155,7 @@ public class SakilaApplication {
 	public Map<String, Boolean> deleteFilm(@PathVariable(value = "id") int filmId)
 			throws ResourceNotFoundException {
 		Film film = filmRepo.findById(filmId)
-				.orElseThrow(() -> new ResourceNotFoundException("Film not found for this id :: " + filmId));
+				.orElseThrow(() -> new ResourceNotFoundException(filmIdErrorMessage + filmId));
 
 		filmRepo.delete(film);
 		Map<String, Boolean> response = new HashMap<>();
