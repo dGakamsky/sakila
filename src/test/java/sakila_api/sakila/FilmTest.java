@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 public class FilmTest {
 
     @Test
-    public void testGetFilmId(){
+    void testGetFilmId(){
         Film newFilm = new Film();
         Assertions.assertEquals(0, newFilm.getFilmId(), "film ID get not working");
 
     }
 
     @Test
-    public void testSetFilmId(){
+    void testSetFilmId(){
         Film newFilm = new Film();
         newFilm.setFilmId(2);
         Assertions.assertEquals(2, newFilm.getFilmId(), "film ID set not working");
@@ -22,7 +22,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetTitle(){
+    void testGetTitle(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -38,7 +38,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetTitle(){
+    void testSetTitle(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -54,7 +54,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetDescription(){
+    void testGetDescription(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -70,7 +70,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetDescription(){
+    void testSetDescription(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -86,7 +86,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetReleaseYear(){
+    void testGetReleaseYear(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -102,7 +102,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetReleaseYear(){
+    void testSetReleaseYear(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -118,7 +118,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetLanguageId(){
+    void testGetLanguageId(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -134,7 +134,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetLanguageId(){
+    void testSetLanguageId(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -150,7 +150,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetRentalDuration(){
+    void testGetRentalDuration(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -166,7 +166,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetRentalDuration(){
+    void testSetRentalDuration(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -182,7 +182,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetRentalRate(){
+    void testGetRentalRate(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -198,7 +198,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetRentalRate(){
+    void testSetRentalRate(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -214,7 +214,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetLength(){
+    void testGetLength(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -230,7 +230,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetLength(){
+    void testSetLength(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -246,7 +246,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetReplacementCost(){
+    void testGetReplacementCost(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -262,7 +262,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetReplacementCost(){
+    void testSetReplacementCost(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -278,7 +278,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetRating(){
+    void testGetRating(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -294,7 +294,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetRating(){
+    void testSetRating(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -310,7 +310,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetSpecialFeatures(){
+    void testGetSpecialFeatures(){
         Film newFilm = new Film("title",
                 "description",
                 2000,
@@ -326,7 +326,7 @@ public class FilmTest {
     }
 
     @Test
-    public void testSetSpecialFeatures(){
+    void testSetSpecialFeatures(){
         Film newFilm = new Film("title",
                 "description",
                 2000,

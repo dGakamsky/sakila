@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 public class StoreTest {
 
     @Test
-    public void testGetStoreId() {
+    void testGetStoreId() {
         Store newStore = new Store();
         Assertions.assertEquals(0, newStore.getStoreId(), "Store ID getter and setter dont work");
 
     }
 
     @Test
-    public void testSetStoreId() {
+    void testSetStoreId() {
         Store newStore = new Store();
         newStore.setStoreId(1);
         Assertions.assertEquals(1, newStore.getStoreId(), "Store ID getter and setter dont work");
@@ -21,14 +21,14 @@ public class StoreTest {
     }
 
     @Test
-    public void testGetManagerStaffId() {
+    void testGetManagerStaffId() {
         Store newStore = new Store(1, 1);
         Assertions.assertEquals(1, newStore.getManager_staff_id(), "Manager Staff getter doesent work");
 
     }
 
     @Test
-    public void testSetManagerStaffId() {
+    void testSetManagerStaffId() {
         Store newStore = new Store(1, 1);
         newStore.setManager_staff_id(27);
         Assertions.assertEquals(27, newStore.getManager_staff_id(), "Manager Staff setter doesent work");
@@ -37,14 +37,14 @@ public class StoreTest {
     }
 
     @Test
-    public void testGetAddressId() {
+    void testGetAddressId() {
         Store newStore = new Store(1, 1);
         Assertions.assertEquals(1, newStore.getAddress_id(), "Address ID getter doesent work");
 
     }
 
     @Test
-    public void testSetAddressId() {
+    void testSetAddressId() {
         Store newStore = new Store(1, 1);
         newStore.setAddress_id(27);
         Assertions.assertEquals(27, newStore.getAddress_id(), "Address ID setter doesent work");
