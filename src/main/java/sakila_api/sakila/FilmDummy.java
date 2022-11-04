@@ -3,49 +3,49 @@ package sakila_api.sakila;
 public class FilmDummy {
     String title;
     String description;
-    int release_year;
-    int language_id;
-    int rental_duration;
-    double rental_rate;
+    int releaseYear;
+    int languageId;
+    int rentalDuration;
+    double rentalRate;
     int length;
-    double replacement_cost;
+    double replacementCost;
     String rating;
-    String special_features;
+    String specialFeatures;
 
 
     public FilmDummy(String title,
         String description,
-        int release_year,
-        int language_id,
-        int rental_duration,
-        double rental_rate,
+        int releaseYear,
+        int languageId,
+        int rentalDuration,
+        double rentalRate,
         int length,
-        double replacement_cost,
+        double replacementCost,
         String rating,
-        String special_features
+        String specialFeatures
             ){
             this.title=title;
             this.description=description;
-            this.release_year=release_year;
-            this.language_id=language_id;
-            this.rental_rate=rental_rate;
-            this.rental_duration=rental_duration;
+            this.releaseYear = releaseYear;
+            this.languageId = languageId;
+            this.rentalRate = rentalRate;
+            this.rentalDuration = rentalDuration;
             this.length=length;
-            this.replacement_cost=replacement_cost;
+            this.replacementCost = replacementCost;
             this.rating=rating;
-            this.special_features=special_features;
+            this.specialFeatures = specialFeatures;
     }
 
     public Film mapToFilm(){
         return new Film(this.title,
                 this.description,
-                this.release_year,
-                this.language_id,
-                this.rental_duration,
-                this.rental_rate,
+                this.releaseYear,
+                this.languageId,
+                this.rentalDuration,
+                this.rentalRate,
                 this.length,
-                this.replacement_cost,
+                this.replacementCost,
                 this.rating,
-                this.special_features);
+                this.specialFeatures);
     }
 }
