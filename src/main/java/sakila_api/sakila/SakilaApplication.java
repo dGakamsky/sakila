@@ -16,7 +16,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin("https://localhost:8080")
 @RequestMapping("/home")
-
+public
 class SakilaApplication {
 
 	@Autowired
