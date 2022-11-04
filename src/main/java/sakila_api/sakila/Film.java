@@ -20,28 +20,28 @@ public class Film {
     String description;
 
     @Column(name = "release_year")
-    int release_year;
+    int releaseYear;
 
     @Column(name = "language_id")
-    int language_id;
+    int languageId;
 
     @Column(name = "rental_duration")
-    int rental_duration;
+    int rentalDuration;
 
     @Column(name = "rental_rate")
-    double rental_rate;
+    double rentalRate;
 
     @Column(name = "length")
     int length;
 
     @Column(name = "replacement_cost")
-    double replacement_cost;
+    double replacementCost;
 
     @Column(name = "rating")
     String rating;
 
     @Column(name = "special_features")
-    String special_features;
+    String specialFeatures;
 
 
     /* relations */
@@ -53,25 +53,25 @@ public class Film {
     public Film (
             String title,
             String description,
-            int release_year,
-            int language_id,
-            int rental_duration,
-            double rental_rate,
+            int releaseYear,
+            int languageId,
+            int rentalDuration,
+            double rentalRate,
             int length,
-            double replacement_cost,
+            double replacementCost,
             String rating,
-            String special_features
+            String specialFeatures
             ){
         this.title=title;
         this.description=description;
-        this.release_year=release_year;
-        this.language_id=language_id;
-        this.rental_rate=rental_rate;
-        this.rental_duration=rental_duration;
+        this.releaseYear = releaseYear;
+        this.languageId = languageId;
+        this.rentalRate = rentalRate;
+        this.rentalDuration = rentalDuration;
         this.length=length;
-        this.replacement_cost=replacement_cost;
+        this.replacementCost = replacementCost;
         this.rating=rating;
-        this.special_features=special_features;
+        this.specialFeatures = specialFeatures;
 
     }
 
@@ -87,21 +87,21 @@ public class Film {
 
     public String getDescription(){return this.description;}
 
-    public int getRelease_year(){return this.release_year;}
+    public int getReleaseYear(){return this.releaseYear;}
 
-    public int getLanguage_id(){return this.language_id;}
+    public int getLanguageId(){return this.languageId;}
 
-    public int getRental_duration(){return this.rental_duration;}
+    public int getRentalDuration(){return this.rentalDuration;}
 
-    public double getRental_rate(){return this.rental_rate;}
+    public double getRentalRate(){return this.rentalRate;}
 
     public int getLength(){return this.length;}
 
-    public double getReplacement_cost(){return this.replacement_cost;}
+    public double getReplacementCost(){return this.replacementCost;}
 
     public String getRating(){return this.rating;}
 
-    public String getSpecial_features(){return this.special_features;}
+    public String getSpecialFeatures(){return this.specialFeatures;}
 
     public void setDescription(String description) {
         this.description = description;
@@ -111,8 +111,8 @@ public class Film {
         this.filmId = filmId;
     }
 
-    public void setLanguage_id(int language_id) {
-        this.language_id = language_id;
+    public void setLanguageId(int languageId) {
+        this.languageId = languageId;
     }
 
     public void setLength(int length) {
@@ -124,24 +124,24 @@ public class Film {
         this.rating = rating;
     }
 
-    public void setRelease_year(int release_year) {
-        this.release_year = release_year;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
-    public void setRental_duration(int rental_duration) {
-        this.rental_duration = rental_duration;
+    public void setRentalDuration(int rentalDuration) {
+        this.rentalDuration = rentalDuration;
     }
 
-    public void setRental_rate(double rental_rate) {
-        this.rental_rate = rental_rate;
+    public void setRentalRate(double rentalRate) {
+        this.rentalRate = rentalRate;
     }
 
-    public void setReplacement_cost(double replacement_cost) {
-        this.replacement_cost = replacement_cost;
+    public void setReplacementCost(double replacementCost) {
+        this.replacementCost = replacementCost;
     }
 
-    public void setSpecial_features(String special_features) {
-        this.special_features = special_features;
+    public void setSpecialFeatures(String specialFeatures) {
+        this.specialFeatures = specialFeatures;
     }
 
     public void setTitle(String title) {

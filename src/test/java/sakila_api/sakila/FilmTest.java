@@ -97,7 +97,7 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        Assertions.assertEquals(2000, newFilm.getRelease_year(), "release year get not working");
+        Assertions.assertEquals(2000, newFilm.getReleaseYear(), "release year get not working");
 
     }
 
@@ -113,8 +113,8 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        newFilm.setRelease_year(1);
-        Assertions.assertEquals(1, newFilm.getRelease_year(), "release year set not working");
+        newFilm.setReleaseYear(1);
+        Assertions.assertEquals(1, newFilm.getReleaseYear(), "release year set not working");
     }
 
     @Test
@@ -129,7 +129,7 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        Assertions.assertEquals(1, newFilm.getLanguage_id(), "release year get not working");
+        Assertions.assertEquals(1, newFilm.getLanguageId(), "release year get not working");
 
     }
 
@@ -145,8 +145,8 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        newFilm.setLanguage_id(2);
-        Assertions.assertEquals(2, newFilm.getLanguage_id(), "release year set not working");
+        newFilm.setLanguageId(2);
+        Assertions.assertEquals(2, newFilm.getLanguageId(), "release year set not working");
     }
 
     @Test
@@ -161,7 +161,7 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        Assertions.assertEquals(1, newFilm.getRental_duration(), "rental duration get not working");
+        Assertions.assertEquals(1, newFilm.getRentalDuration(), "rental duration get not working");
 
     }
 
@@ -177,8 +177,8 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        newFilm.setRental_duration(2);
-        Assertions.assertEquals(2, newFilm.getRental_duration(), "rental duration set not working");
+        newFilm.setRentalDuration(2);
+        Assertions.assertEquals(2, newFilm.getRentalDuration(), "rental duration set not working");
     }
 
     @Test
@@ -193,7 +193,7 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        Assertions.assertEquals(1.0, newFilm.getRental_rate(), "rental duration get not working");
+        Assertions.assertEquals(1.0, newFilm.getRentalRate(), "rental duration get not working");
 
     }
 
@@ -209,8 +209,8 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        newFilm.setRental_rate(2.0);
-        Assertions.assertEquals(2.0, newFilm.getRental_rate(), "rental duration set not working");
+        newFilm.setRentalRate(2.0);
+        Assertions.assertEquals(2.0, newFilm.getRentalRate(), "rental duration set not working");
     }
 
     @Test
@@ -257,7 +257,7 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        Assertions.assertEquals(1.0, newFilm.getReplacement_cost(), "rental duration get not working");
+        Assertions.assertEquals(1.0, newFilm.getReplacementCost(), "rental duration get not working");
 
     }
 
@@ -273,8 +273,8 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        newFilm.setReplacement_cost(2.0);
-        Assertions.assertEquals(2.0, newFilm.getReplacement_cost(), "rental duration set not working");
+        newFilm.setReplacementCost(2.0);
+        Assertions.assertEquals(2.0, newFilm.getReplacementCost(), "rental duration set not working");
     }
 
     @Test
@@ -321,7 +321,7 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        Assertions.assertEquals("special_features", newFilm.getSpecial_features(), "rental duration get not working");
+        Assertions.assertEquals("special_features", newFilm.getSpecialFeatures(), "rental duration get not working");
 
     }
 
@@ -337,8 +337,8 @@ public class FilmTest {
                 1.0,
                 "PG13",
                 "special_features");
-        newFilm.setSpecial_features("none");
-        Assertions.assertEquals("none", newFilm.getSpecial_features(), "rental duration set not working");
+        newFilm.setSpecialFeatures("none");
+        Assertions.assertEquals("none", newFilm.getSpecialFeatures(), "rental duration set not working");
     }
 
 

@@ -132,11 +132,11 @@ public class SakilaApplication {
 		film.setDescription(filmDetails.getDescription());
 		film.setLength(filmDetails.getLength());
 		film.setRating(filmDetails.getRating());
-		film.setLanguage_id(filmDetails.getLanguage_id());
-		film.setSpecial_features(filmDetails.getSpecial_features());
-		film.setReplacement_cost(filmDetails.getReplacement_cost());
-		film.setRental_rate(filmDetails.getRental_rate());
-		film.setRental_duration(filmDetails.getRental_duration());
+		film.setLanguageId(filmDetails.getLanguageId());
+		film.setSpecialFeatures(filmDetails.getSpecialFeatures());
+		film.setReplacementCost(filmDetails.getReplacementCost());
+		film.setRentalRate(filmDetails.getRentalRate());
+		film.setRentalDuration(filmDetails.getRentalDuration());
 
 		filmRepo.save(film);
 		return ResponseEntity.ok(film);
