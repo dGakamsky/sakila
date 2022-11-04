@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin
+@CrossOrigin("https://localhost:8080")
 @RequestMapping("/home")
 
 public class SakilaApplication {
