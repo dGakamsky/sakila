@@ -3,7 +3,7 @@ package sakila_api.sakila;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class DummyTests {
+class DummyTests {
 
     @Test
     void actorDummyTest(){
