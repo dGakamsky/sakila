@@ -23,15 +23,15 @@ public class StoreTest {
     @Test
     void testGetManagerStaffId() {
         Store newStore = new Store(1, 1);
-        Assertions.assertEquals(1, newStore.getManager_staff_id(), "Manager Staff getter doesent work");
+        Assertions.assertEquals(1, newStore.getManagerStaffId(), "Manager Staff getter doesent work");
 
     }
 
     @Test
     void testSetManagerStaffId() {
         Store newStore = new Store(1, 1);
-        newStore.setManager_staff_id(27);
-        Assertions.assertEquals(27, newStore.getManager_staff_id(), "Manager Staff setter doesent work");
+        newStore.setManagerStaffId(27);
+        Assertions.assertEquals(27, newStore.getManagerStaffId(), "Manager Staff setter doesent work");
 
 
     }
@@ -39,15 +39,15 @@ public class StoreTest {
     @Test
     void testGetAddressId() {
         Store newStore = new Store(1, 1);
-        Assertions.assertEquals(1, newStore.getAddress_id(), "Address ID getter doesent work");
+        Assertions.assertEquals(1, newStore.getAddressId(), "Address ID getter doesent work");
 
     }
 
     @Test
     void testSetAddressId() {
         Store newStore = new Store(1, 1);
-        newStore.setAddress_id(27);
-        Assertions.assertEquals(27, newStore.getAddress_id(), "Address ID setter doesent work");
+        newStore.setAddressId(27);
+        Assertions.assertEquals(27, newStore.getAddressId(), "Address ID setter doesent work");
 
 
     }
