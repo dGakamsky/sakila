@@ -174,6 +174,12 @@ class SakilaApplication {
 		return filmRepo.getFilmsByActor(actorId);
 	}
 
+	/* search films by actor methods */
+	@GetMapping("/filmsByActorLimited/{id}")
+	public List<Film> getFilmsByActorLimited(@PathVariable(value = "id") int actorId){
+		return filmRepo.getFilmsByActorLimited(actorId);
+	}
+
 	@GetMapping("/actorsByFilm/{id}")
 	public List<Actor> getActorsByFilm(@PathVariable(value = "id") int filmId){
 		return actorRepo.getActorsByFilm(filmId);
