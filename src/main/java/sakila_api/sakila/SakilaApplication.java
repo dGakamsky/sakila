@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin("https://localhost:8080")
+@CrossOrigin(origins = {"http://localhost:8080","http://localhost:3000"})
 @RequestMapping("/home")
 public
 class SakilaApplication {
@@ -175,9 +175,10 @@ class SakilaApplication {
 	}
 
 	/* search films by actor methods */
-	@GetMapping("/filmsByActorLimited/{id}")
-	public List<Film> getFilmsByActorLimited(@PathVariable(value = "id") int actorId){
-		return filmRepo.getFilmsByActorLimited(actorId);
+	@GetMapping("/filmsByActorLimited/{id}:{limit}")
+	public List<Film> getFilmsByActorLimited(@PathVariable(value = "id") int actorId,
+											 @PathVariable(value="limit") int limit){
+		return filmRepo.getFilmsByActorLimited(actorId, limit);
 	}
 
 	@GetMapping("/actorsByFilm/{id}")

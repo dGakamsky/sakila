@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://boards.4channel.org/tg/thread/86711652"
           target="_blank"
           rel="noopener noreferrer"
         >

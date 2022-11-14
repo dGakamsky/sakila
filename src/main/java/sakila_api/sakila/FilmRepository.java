@@ -13,7 +13,7 @@ public interface FilmRepository extends JpaRepository<Film, Integer> {
     List<Film> getFilmsByActor(int id);
 
     @Query (nativeQuery = true,
-            value = "select * from film where film_id in (select film_id from film_actor where actor_id = ?1)")
-    List<Film> getFilmsByActorLimited(int id);
+            value = "select * from film where film_id in (select film_id from film_actor where actor_id = ?1) limit ?2")
+    List<Film> getFilmsByActorLimited(int id, int limit);
 
 }
