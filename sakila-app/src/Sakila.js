@@ -31,7 +31,7 @@ class Sakila extends React.Component{
 
     searchForm(){
         return(
-            <div>
+            <div className = "searchForm">
                  <form>
                     <label>Enter Actor first name:
                     <input

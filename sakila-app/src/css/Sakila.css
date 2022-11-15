@@ -72,3 +72,11 @@ h1{
     text-align: center;
 }
 
+.searchForm{
+    background-color: azure;
+    width:600px;
+    height:300px;
+    padding: 50px 25px;
+    box-sizing: border-box;
+}
+
