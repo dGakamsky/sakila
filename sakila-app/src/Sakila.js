@@ -141,7 +141,7 @@ function Api(){
     }
 
     const GetApi = async ()=> {
-      const result = await fetch(`https://localhost:8080/filmsByActorLimited/1:5`, {headers});
+      const result = await fetch(`https://localhost:8080/home/filmsByActorLimited/1:5`, {headers});
       const response = await result.json();
       console.log(response);
       alert("midway through fetch");

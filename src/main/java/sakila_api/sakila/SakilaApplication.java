@@ -56,6 +56,16 @@ class SakilaApplication {
 		return ResponseEntity.ok().body(actor);
 	}
 
+	@GetMapping("/actorByName/{firstname}:{lastname}")
+	public List<Actor> getActorByName(@PathVariable(value = "firstname") String firstname,
+												@PathVariable(value = "lastname") String lastname)
+			throws ResourceNotFoundException {
+		return  actorRepo.getActorByName(firstname, lastname);
+	}
+
+
+
+
 	@PatchMapping("/allActors/{id}/{firstName}")
 	public ResponseEntity<Actor> updateEmployeePartially(@PathVariable int id, @PathVariable String firstName) {
 		Optional<Actor> value = actorRepo.findById(id);

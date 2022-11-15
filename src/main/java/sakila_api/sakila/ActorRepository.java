@@ -29,5 +29,9 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
             "where actor_id = ?1))")
     List<Actor> getActorsByActor(int id);
 
+    @Query(nativeQuery = true,
+    value = "select * from actor where first_name = ?1 and last_name= ?2")
+    List<Actor> getActorByName(String firstName, String lastName);
+
 
 }
