@@ -5,6 +5,11 @@ import React, { useEffect, useState } from 'react';
 class Sakila extends React.Component{
     constructor(props){
     super(props);
+    this.state={
+        firstName:"",
+        lastName:"",
+        id: 0
+    };
     }
 
     intro(){
@@ -13,7 +18,7 @@ class Sakila extends React.Component{
         <h1>
             <b>
                 <i>
-                    Sakila Application
+                    Search Form Page
                 </i>
             </b>
         </h1>
@@ -21,6 +26,45 @@ class Sakila extends React.Component{
         This is the text for the application where the actors name will go
         </p>
         </div>   
+        );
+    }
+
+    searchForm(){
+        return(
+            <div>
+                 <form>
+                    <label>Enter Actor first name:
+                    <input
+                    type="text" 
+                    value={this.firstName}
+                    onChange={(e) => this.firstName(e.target.value)
+                    }
+                    />
+                    </label>
+                </form>
+                <form>
+                    <label>Enter Actor last name:
+                    <input
+                    type="text" 
+                    value={this.firstName}
+                    onChange={(e) => this.lastName(e.target.value)
+                    }
+                    />
+                    </label>
+                </form>
+                <button className="button" onClick={Api}> Search by name </button>
+                <form>
+                    <label>Enter Actor id:
+                    <input
+                    type="text" 
+                    value={this.firstName}
+                    onChange={(e) => this.id(e.target.value)
+                    }
+                    />
+                    </label>
+                </form>
+                <button className="button" onClick={Api}> Search by ID </button>
+            </div>
         );
     }
 
@@ -112,6 +156,7 @@ class Sakila extends React.Component{
         <div className = "sakilaBackground">
             <div className = "sakilaTextcontainer">
                 {this.intro()}
+                {this.searchForm()}
                 {this.actorInfo()}
                 {this.links()}
  
@@ -123,6 +168,8 @@ class Sakila extends React.Component{
                 </p>
                 <button className="button" onClick={Api}> This is a button </button>
                 <Api />
+                <button className="button" onClick={Api}> TESTING: link to actor </button>
+                <button className="button" onClick={Api}> TESTING: link to film </button>
             </div>
         </div>
     );

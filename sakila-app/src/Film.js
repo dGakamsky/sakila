@@ -2,7 +2,7 @@ import './css/Sakila.css';
 import image from './images/default_name._V142442227_UY289_CR46,0,196,289_.jpg';
 import React, { useEffect, useState } from 'react';
 
-class Sakila extends React.Component{
+class Film extends React.Component{
     constructor(props){
     super(props);
     }
@@ -13,7 +13,7 @@ class Sakila extends React.Component{
         <h1>
             <b>
                 <i>
-                    Sakila Application
+                    Film Page
                 </i>
             </b>
         </h1>
@@ -161,4 +161,4 @@ function Api(){
     );
     }
 
-export default Sakila;
+export default Film;
