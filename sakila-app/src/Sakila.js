@@ -151,6 +151,10 @@ class Sakila extends React.Component{
         );
     }
 
+    getApi(){
+        return (<Api/>);
+    }
+
     render(){
     return(
         <div className = "sakilaBackground">
@@ -166,8 +170,7 @@ class Sakila extends React.Component{
                 <p>
                     Would you like to find what films the actor was in?
                 </p>
-                <button className="button" onClick={Api}> This is a button </button>
-                <Api />
+                    <Api/>
                 <button className="button" onClick={Api}> TESTING: link to actor </button>
                 <button className="button" onClick={Api}> TESTING: link to film </button>
             </div>
@@ -188,22 +191,21 @@ function Api(){
     }
 
     const GetApi = async ()=> {
-      const result = await fetch(`https://localhost:8080/home/filmsByActorLimited/1:5`, {headers});
+      const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/1:5`, {headers});
       const response = await result.json();
       console.log(response);
-      alert("midway through fetch");
       if (!result.ok) {
         const error = (response && response.message) || result.statusText;
         console.error(error)}
-      StoreData(response);
+      StoreData(response[0]);
     }
     useEffect(()=>{
         GetApi();
     },[])
-
     return (
         <div>
             {ReturnData.title}
+            {ReturnData.description}
         </div>
     );
     }

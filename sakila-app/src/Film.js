@@ -141,7 +141,7 @@ function Api(){
     }
 
     const GetApi = async ()=> {
-      const result = await fetch(`https://localhost:8080/filmsByActorLimited/1:5`, {headers});
+      const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/1:5`, {headers});
       const response = await result.json();
       console.log(response);
       alert("midway through fetch");
