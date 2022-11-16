@@ -117,22 +117,7 @@ class Sakila extends React.Component{
     linkedMovies(){
         return(
             <div className = "linkedMovies">
-                This is where linked movies will be
-                <li>
-                    linked movie 1
-                </li>
-                <li>
-                    linked movie 2
-                </li>
-                <li>
-                    linked movie 3
-                </li>
-                <li>
-                    linked movie 4
-                </li>
-                <li>
-                    linked movie 5
-                </li>
+                <Api/>
 
             </div>
         );
@@ -170,7 +155,6 @@ class Sakila extends React.Component{
                 <p>
                     Would you like to find what films the actor was in?
                 </p>
-                    <Api/>
                 <button className="button" onClick={Api}> TESTING: link to actor </button>
                 <button className="button" onClick={Api}> TESTING: link to film </button>
             </div>
@@ -183,7 +167,7 @@ class Sakila extends React.Component{
 //========================================================================
 
 function Api(){
-    const[ReturnData, StoreData] = useState("");
+    const[ReturnData, StoreData] = useState([]);
 
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -197,16 +181,17 @@ function Api(){
       if (!result.ok) {
         const error = (response && response.message) || result.statusText;
         console.error(error)}
-      StoreData(response[0]);
+      StoreData(response);
     }
     useEffect(()=>{
         GetApi();
     },[])
     return (
-        <div>
-            {ReturnData.title}
-            {ReturnData.description}
-        </div>
+        ReturnData.map((film) => (
+            <div>
+                {film.title}
+            </div>
+        ))
     );
     }
 
