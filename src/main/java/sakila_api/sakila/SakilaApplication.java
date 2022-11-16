@@ -197,8 +197,14 @@ class SakilaApplication {
 	}
 
 	@GetMapping("/actorsByActor/{id}")
-	public List<Actor> getActorsByActor(@PathVariable(value = "id") int filmId){
-		return actorRepo.getActorsByFilm(filmId);
+	public List<Actor> getActorsByActor(@PathVariable(value = "id") int actorId){
+		return actorRepo.getActorsByActor(actorId);
+	}
+
+	@GetMapping("/actorsByActorLimited/{id}:{limit}")
+	public List<Actor> getActorsByActorLimited(@PathVariable(value = "id") int actorId,
+											   @PathVariable(value = "limit") int limit){
+		return actorRepo.getActorsByActorLimited(actorId, limit);
 	}
 
 

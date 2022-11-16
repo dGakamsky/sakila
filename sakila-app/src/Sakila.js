@@ -52,7 +52,7 @@ class Sakila extends React.Component{
                     />
                     </label>
                 </form>
-                <button className="button" onClick={Api}> Search by name </button>
+                <button className="button"> Search by name </button>
                 <form>
                     <label>Enter Actor id:
                     <input
@@ -63,7 +63,7 @@ class Sakila extends React.Component{
                     />
                     </label>
                 </form>
-                <button className="button" onClick={Api}> Search by ID </button>
+                <button className="button"> Search by ID </button>
             </div>
         );
     }
@@ -93,23 +93,7 @@ class Sakila extends React.Component{
     linkedActors(){
         return (
             <div className = "linkedActors">
-                This is where linked actors will be
-                <li>
-                    linked actor 1
-                </li>
-                <li>
-                    linked actor 2
-                </li>
-                <li>
-                    linked actor 3
-                </li>
-                <li>
-                    linked actor 4
-                </li>
-                <li>
-                    linked actor 5
-                </li>
-
+                <GetMoviesByActor id={"1"} limit={"5"}/>
             </div>
         );
     }
@@ -117,8 +101,7 @@ class Sakila extends React.Component{
     linkedMovies(){
         return(
             <div className = "linkedMovies">
-                <Api/>
-
+                <GetMoviesByActor id={"1"} limit={"5"}/>
             </div>
         );
     }
@@ -136,9 +119,6 @@ class Sakila extends React.Component{
         );
     }
 
-    getApi(){
-        return (<Api/>);
-    }
 
     render(){
     return(
@@ -148,15 +128,12 @@ class Sakila extends React.Component{
                 {this.searchForm()}
                 {this.actorInfo()}
                 {this.links()}
- 
                 <p>
                     Explaining the function of the application
                 </p>
                 <p>
                     Would you like to find what films the actor was in?
                 </p>
-                <button className="button" onClick={Api}> TESTING: link to actor </button>
-                <button className="button" onClick={Api}> TESTING: link to film </button>
             </div>
         </div>
     );
@@ -166,8 +143,16 @@ class Sakila extends React.Component{
 
 //========================================================================
 
-function Api(){
+function GetMoviesByActor(input){
+
+    const[Id, StoreId] = useState("")
+    const[Movies, StoreMovies] = useState("")
     const[ReturnData, StoreData] = useState([]);
+    StoreId(input.id);
+    StoreMovies(input.limit);
+    console.log(Id);
+    console.log(Movies);
+    console.log(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`);
 
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -175,7 +160,7 @@ function Api(){
     }
 
     const GetApi = async ()=> {
-      const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/1:5`, {headers});
+      const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`, {headers});
       const response = await result.json();
       console.log(response);
       if (!result.ok) {
@@ -186,13 +171,15 @@ function Api(){
     useEffect(()=>{
         GetApi();
     },[])
+
     return (
         ReturnData.map((film) => (
-            <div>
+            <ol key = { film.filmId }>
                 {film.title}
-            </div>
+            </ol>
         ))
     );
     }
+
 
 export default Sakila;

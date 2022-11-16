@@ -30,6 +30,18 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
     List<Actor> getActorsByActor(int id);
 
     @Query(nativeQuery = true,
+            value = "select * " +
+                    "from actor " +
+                    "where actor_id " +
+                    "in(select actor_id " +
+                    "from film_actor " +
+                    "where film_id " +
+                    "in (select film_id " +
+                    "from film_actor " +
+                    "where actor_id = ?1))")
+    List<Actor> getActorsByActorLimited(int id, int limit);
+
+    @Query(nativeQuery = true,
     value = "select * from actor where first_name = ?1 and last_name= ?2")
     List<Actor> getActorByName(String firstName, String lastName);
 
