@@ -93,7 +93,7 @@ class Sakila extends React.Component{
     linkedActors(){
         return (
             <div className = "linkedActors">
-                <GetMoviesByActor id={"1"} limit={"5"}/>
+                <GetActorsByActor id={"1"} limit={"5"}/>
             </div>
         );
     }
@@ -101,7 +101,7 @@ class Sakila extends React.Component{
     linkedMovies(){
         return(
             <div className = "linkedMovies">
-                <GetMoviesByActor id={"1"} limit={"5"}/>
+                <GetMoviesByActor id={"2"} limit={"3"}/>
             </div>
         );
     }
@@ -148,8 +148,6 @@ function GetMoviesByActor(input){
     const[Id, StoreId] = useState(input.id);
     const[Movies, StoreMovies] = useState(input.limit);
     const[ReturnData, StoreData] = useState([]);
-    // StoreId(input.id);
-    // StoreMovies(input.limit);
     console.log(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`);
 
     const headers = {
@@ -178,6 +176,40 @@ function GetMoviesByActor(input){
         ))
     );
     }
+
+function GetActorsByActor(input){
+
+        const[Id, StoreId] = useState(input.id);
+        const[Actors, StoreActors] = useState(input.limit);
+        const[ReturnData, StoreData] = useState([]);
+        console.log(`https://sakila-1668596751992.azurewebsites.net/home/actorsByActorLimited/${Id}:${Actors}`);
+    
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+        }
+    
+        const GetApi = async ()=> {
+          const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/actorsByActorLimited/${Id}:${Actors}`, {headers});
+          const response = await result.json();
+          console.log(response);
+          if (!result.ok) {
+            const error = (response && response.message) || result.statusText;
+            console.error(error)}
+          StoreData(response);
+        }
+        useEffect(()=>{
+            GetApi();
+        },[])
+    
+        return (
+            ReturnData.map((actor) => (
+                <ol key = { actor.actorId }>
+                    {actor.actorFirstName} {actor.actorLastName}
+                </ol>
+            ))
+        );
+        }
 
 
 export default Sakila;
