@@ -145,13 +145,11 @@ class Sakila extends React.Component{
 
 function GetMoviesByActor(input){
 
-    const[Id, StoreId] = useState("")
-    const[Movies, StoreMovies] = useState("")
+    const[Id, StoreId] = useState(input.id);
+    const[Movies, StoreMovies] = useState(input.limit);
     const[ReturnData, StoreData] = useState([]);
-    StoreId(input.id);
-    StoreMovies(input.limit);
-    console.log(Id);
-    console.log(Movies);
+    // StoreId(input.id);
+    // StoreMovies(input.limit);
     console.log(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`);
 
     const headers = {
