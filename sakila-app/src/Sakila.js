@@ -8,7 +8,8 @@ class Sakila extends React.Component{
     this.state={
         firstName:"",
         lastName:"",
-        id: 0
+        id: 0,
+        actorData: []
     };
     }
 
@@ -32,41 +33,24 @@ class Sakila extends React.Component{
     searchForm(){
         return(
             <div className = "searchForm">
-                 <form>
-                    <label>Enter Actor first name:
-                    <input
-                    type="text" 
-                    value={this.firstName}
-                    onChange={(e) => this.firstName(e.target.value)
-                    }
-                    />
-                    </label>
-                </form>
-                <form>
-                    <label>Enter Actor last name:
-                    <input
-                    type="text" 
-                    value={this.firstName}
-                    onChange={(e) => this.lastName(e.target.value)
-                    }
-                    />
-                    </label>
-                </form>
-                <button className="button"> Search by name </button>
-                <form>
-                    <label>Enter Actor id:
-                    <input
-                    type="text" 
-                    value={this.firstName}
-                    onChange={(e) => this.id(e.target.value)
-                    }
-                    />
-                    </label>
-                </form>
-                <button className="button"> Search by ID </button>
+               <GetActors/>
             </div>
         );
     }
+
+    
+    handleSearchByName(){
+
+    }
+
+    handleSearchById(){
+        this.preventDefault();
+        alert("alert")
+        this.getActorById()
+    }
+
+
+
 
     actorInfo(){
         return (
@@ -122,26 +106,23 @@ class Sakila extends React.Component{
 
     render(){
     return(
-        <div className = "sakilaBackground">
+        <div className = "sakilaBackgroundList">
             <div className = "sakilaTextcontainer">
                 {this.intro()}
                 {this.searchForm()}
-                {this.actorInfo()}
-                {this.links()}
-                <p>
-                    Explaining the function of the application
-                </p>
-                <p>
-                    Would you like to find what films the actor was in?
-                </p>
+                {/* {this.actorInfo()}
+                {this.links()} */}
+
             </div>
         </div>
     );
     }
-}
 
 
-//========================================================================
+
+}    
+
+//==================== API FUNCTIONS OUTSIDE CLASS ========================================
 
 function GetMoviesByActor(input){
 
@@ -210,6 +191,35 @@ function GetActorsByActor(input){
             ))
         );
         }
+
+function GetActors(){
+            const[ReturnData, StoreData] = useState([]);       
+            const headers = {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+            }
+        
+            const GetApi = async ()=> {
+              const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/allActors`, {headers});
+              const response = await result.json();
+              console.log(response);
+              if (!result.ok) {
+                const error = (response && response.message) || result.statusText;
+                console.error(error)}
+              StoreData(response);
+            }
+            useEffect(()=>{
+                GetApi();
+            },[])
+        
+            return (
+                ReturnData.map((actor) => (
+                    <ol key = { actor.actorId }>
+                        {actor.actorFirstName} {actor.actorLastName}
+                    </ol>
+                ))
+            );
+            }
 
 
 export default Sakila;
