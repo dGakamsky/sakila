@@ -1,6 +1,9 @@
 import './css/Sakila.css';
 import image from './images/default_name._V142442227_UY289_CR46,0,196,289_.jpg';
 import React, { useEffect, useState } from 'react';
+import { Outlet, Link } from "react-router-dom";
+import Actor from './Actor.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 class Film extends React.Component{
     constructor(props){
@@ -59,7 +62,13 @@ class Film extends React.Component{
         links(){
             return (
                 <table className = "links">
+                <Link to="Actor" id={1}>
+                Next Step
+                </Link>
                 <td>
+                <p>
+                    The Actors that star in this movie:
+                </p>
                 {this.linkedActors()}
                 </td>
                 </table>

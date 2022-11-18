@@ -1,18 +1,13 @@
 import './css/Sakila.css';
-import image from './images/default_name._V142442227_UY289_CR46,0,196,289_.jpg';
 import React, { useEffect, useState } from 'react';
 import Actor from './Actor.js';
-import Film from './Film.js';
+import { Outlet, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 class Sakila extends React.Component{
     constructor(props){
     super(props);
-    this.state={
-        firstName:"",
-        lastName:"",
-        id: 0,
-        actorData: []
-    };
     }
 
     intro(){
@@ -21,12 +16,12 @@ class Sakila extends React.Component{
         <h1>
             <b>
                 <i>
-                    Search Form Page
+                    Sakila Actor Search
                 </i>
             </b>
         </h1>
         <p>
-        This is the text for the application where the actors name will go
+        Please select the actor you would like to view
         </p>
         </div>   
         );
@@ -35,73 +30,9 @@ class Sakila extends React.Component{
     searchForm(){
         return(
             <div className = "searchForm">
-               <GetActors/>
+                <GetActors/>
+                
             </div>
-        );
-    }
-
-    
-    handleSearchByName(){
-
-    }
-
-    handleSearchById(){
-        this.preventDefault();
-        alert("alert")
-        this.getActorById()
-    }
-
-
-
-
-    actorInfo(){
-        return (
-            <div>
-                <table className = "actorInfo">
-                <tr>
-                    <td>
-                        <div className='actorInfoImage'>
-                             <img src = {image}></img>
-                        </div>
-                    </td>
-                    <td>
-                        <div className='actorInfoText' >
-                        This actor has no noteworthy accomplishments and is generally unremarkable
-                        </div>
-                    </td>
-                </tr>
-                </table>
-            </div>
-
-        );
-    }
-
-    linkedActors(){
-        return (
-            <div className = "linkedActors">
-                <GetActorsByActor id={"1"} limit={"5"}/>
-            </div>
-        );
-    }
-
-    linkedMovies(){
-        return(
-            <div className = "linkedMovies">
-                <GetMoviesByActor id={"2"} limit={"3"}/>
-            </div>
-        );
-    }
-
-    links(){
-        return (
-            <table className = "links">
-            <td>
-            {this.linkedActors()}
-            </td>
-            <td>
-            {this.linkedMovies()}
-            </td>
-            </table>
         );
     }
 
@@ -112,9 +43,6 @@ class Sakila extends React.Component{
             <div className = "sakilaTextcontainer">
                 {this.intro()}
                 {this.searchForm()}
-                {/* {this.actorInfo()}
-                {this.links()} */}
-
             </div>
         </div>
     );
@@ -125,72 +53,6 @@ class Sakila extends React.Component{
 }    
 
 //==================== API FUNCTIONS OUTSIDE CLASS ========================================
-
-function GetMoviesByActor(input){
-
-    const[Id, StoreId] = useState(input.id);
-    const[Movies, StoreMovies] = useState(input.limit);
-    const[ReturnData, StoreData] = useState([]);
-    console.log(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`);
-
-    const headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-    }
-
-    const GetApi = async ()=> {
-      const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`, {headers});
-      const response = await result.json();
-      if (!result.ok) {
-        const error = (response && response.message) || result.statusText;
-        console.error(error)}
-      StoreData(response);
-    }
-    useEffect(()=>{
-        GetApi();
-    },[])
-
-    return (
-        ReturnData.map((film) => (
-            <ol key = { film.filmId }>
-                {film.title}
-            </ol>
-        ))
-    );
-    }
-
-function GetActorsByActor(input){
-
-        const[Id, StoreId] = useState(input.id);
-        const[Actors, StoreActors] = useState(input.limit);
-        const[ReturnData, StoreData] = useState([]);
-        console.log(`https://sakila-1668596751992.azurewebsites.net/home/actorsByActorLimited/${Id}:${Actors}`);
-    
-        const headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json'
-        }
-    
-        const GetApi = async ()=> {
-          const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/actorsByActorLimited/${Id}:${Actors}`, {headers});
-          const response = await result.json();
-          if (!result.ok) {
-            const error = (response && response.message) || result.statusText;
-            console.error(error)}
-          StoreData(response);
-        }
-        useEffect(()=>{
-            GetApi();
-        },[])
-    
-        return (
-            ReturnData.map((actor) => (
-                <ol key = { actor.actorId }>
-                    {actor.actorFirstName} {actor.actorLastName}
-                </ol>
-            ))
-        );
-        }
 
 function GetActors(){
             const[ReturnData, StoreData] = useState([]);       
@@ -210,12 +72,17 @@ function GetActors(){
             useEffect(()=>{
                 GetApi();
             },[])
+            console.log(ReturnData);
         
             return (
                 ReturnData.map((actor) => (
-                    <ol key = { actor.actorId }>
+                <ol key = { actor.actorId }>
+                    <Link to={"./Actor"} state={{id:actor.actorId}} >
                         {actor.actorFirstName} {actor.actorLastName}
-                    </ol>
+                    </Link>
+
+                    {/* {actor.actorFirstName} {actor.actorLastName} */}
+                </ol>
                 ))
             );
             }

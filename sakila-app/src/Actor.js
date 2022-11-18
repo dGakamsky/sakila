@@ -1,10 +1,14 @@
 import './css/Sakila.css';
 import image from './images/default_name._V142442227_UY289_CR46,0,196,289_.jpg';
 import React, { useEffect, useState } from 'react';
+import { Outlet, Link } from "react-router-dom";
 
 class Actor extends React.Component{
     constructor(props){
         super(props);
+        this.state ={
+            id:""
+        }
         }
     
         intro(){
@@ -122,7 +126,9 @@ function GetMoviesByActor(input){
     return (
         ReturnData.map((film) => (
             <ol key = { film.filmId }>
-                {film.title}
+                    <Link to={"./Film"} state={{id:film.filmId}} >
+                        {film.title}
+                    </Link>
             </ol>
         ))
     );
@@ -155,7 +161,9 @@ function GetActorsByActor(input){
         return (
             ReturnData.map((actor) => (
                 <ol key = { actor.actorId }>
-                    {actor.actorFirstName} {actor.actorLastName}
+                    <Link to={"./Actor"} state={{id:actor.actorId}} >
+                        {actor.actorFirstName} {actor.actorLastName}
+                    </Link>
                 </ol>
             ))
         );
