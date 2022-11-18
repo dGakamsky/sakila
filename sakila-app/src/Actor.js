@@ -34,7 +34,8 @@ class Actor extends React.Component{
                         </td>
                         <td>
                             <div className='actorInfoText' >
-                            This actor has no noteworthy accomplishments and is generally unremarkable
+                            This actor has no noteworthy accomplishments and is generally unremarkable. <br></br>
+                            Once they do something worthwhile then maybe people will update this page? who knows. 
                             </div>
                         </td>
                     </tr>
@@ -83,12 +84,6 @@ class Actor extends React.Component{
                     {this.intro()}
                     {this.actorInfo()}
                     {this.links()}
-                    <p>
-                        Explaining the function of the application
-                    </p>
-                    <p>
-                        Would you like to find what films the actor was in?
-                    </p>
                 </div>
             </div>
         );
