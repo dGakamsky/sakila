@@ -2,23 +2,25 @@ import './css/Sakila.css';
 import image from './images/default_name._V142442227_UY289_CR46,0,196,289_.jpg';
 import React, { useEffect, useState } from 'react';
 import { Outlet, Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 class Actor extends React.Component{
     constructor(props){
         super(props);
-        this.state ={
-            id:""
-        }
+        this.state ={ id:1};
+        const{history, location} = props
+        const id = props.location
+        console.log(id)
         }
     
         intro(){
-            const id = this.props.id;
+            const id = 1
             return(
             <div> 
             <h1>
                 <b>
                     <i>
-                        <GetActor id={id}/>
+                        <GetActor id={id}/> 
                     </i>
                 </b>
             </h1>
@@ -50,18 +52,28 @@ class Actor extends React.Component{
         }
     
         linkedActors(){
-            const id = this.props.id;
+            const id = 1
             return (
-                <div className = "linkedActors">
-                    <GetActorsByActor id={id} limit={5}/>
+                <div className="linkedActors">
+                <p>
+                    Here are some of the actors associated with this
+                </p>
+                <GetActorsByActor id={id} limit={5} />
                 </div>
             );
         }
     
         linkedMovies(){
-            const id = this.props.id;
+            const id = 1
             return(
+       
                 <div className = "linkedMovies">
+                    <p>
+                    Here are some of this Actors roles:
+                    </p>
+                    <br>
+
+                    </br>
                     <GetMoviesByActor id={id} limit={5}/>
                 </div>
             );

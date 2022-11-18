@@ -8,10 +8,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 class Film extends React.Component{
     constructor(props){
         super(props);
+        this.state ={ id:1};
         }
     
         intro(){
-            const id = this.props.id;
+            const id = this.state.id;
             return(
             <div> 
             <h1>
@@ -27,7 +28,7 @@ class Film extends React.Component{
         }
     
         actorInfo(){
-            const id = this.props.id;
+            const id = this.state.id;
             return (
                 <div>
                     <table className = "actorInfo">
@@ -50,7 +51,7 @@ class Film extends React.Component{
         }
     
         linkedActors(){
-            const id = this.props.id;
+            const id = this.state.id;
             return (
                 <div className = "linkedActors">
                     <GetActorsByFilm id={id} limit={10}/>
@@ -62,9 +63,6 @@ class Film extends React.Component{
         links(){
             return (
                 <table className = "links">
-                <Link to="Actor" id={1}>
-                Next Step
-                </Link>
                 <td>
                 <p>
                     The Actors that star in this movie:
@@ -122,7 +120,9 @@ function GetActorsByFilm(input){
         return (
             ReturnData.map((actor) => (
                 <ol key = { actor.actorId }>
-                    {actor.actorFirstName} {actor.actorLastName}
+                    <Link to={"./Actor"} id={actor.actorId} >
+                        {actor.actorFirstName} {actor.actorLastName}
+                    </Link>
                 </ol>
             ))
         );

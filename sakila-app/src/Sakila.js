@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Actor from './Actor.js';
 import { Outlet, Link } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {withRouter} from 'react-router';
 
 
 class Sakila extends React.Component{
@@ -72,16 +73,14 @@ function GetActors(){
             useEffect(()=>{
                 GetApi();
             },[])
-            console.log(ReturnData);
-        
+            
+            
             return (
                 ReturnData.map((actor) => (
                 <ol key = { actor.actorId }>
-                    <Link to={"./Actor"} state={{id:actor.actorId}} >
+                    <Link to={`/Actor`}>
                         {actor.actorFirstName} {actor.actorLastName}
                     </Link>
-
-                    {/* {actor.actorFirstName} {actor.actorLastName} */}
                 </ol>
                 ))
             );
