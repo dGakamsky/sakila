@@ -30,14 +30,6 @@ class Film extends React.Component{
             );
         }
     
-        searchForm(){
-            return(
-                <div className = "searchForm">
-                   <GetActors/>
-                </div>
-            );
-        }
-    
         
         handleSearchByName(){
     

@@ -5,52 +5,22 @@ import React, { useEffect, useState } from 'react';
 class Actor extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-            firstName:"",
-            lastName:"",
-            id: 0,
-            actorData: []
-        };
         }
     
         intro(){
+            const id = this.props.id;
             return(
             <div> 
             <h1>
                 <b>
                     <i>
-                        Search Form Page
+                        <GetActor id={id}/>
                     </i>
                 </b>
             </h1>
-            <p>
-            This is the text for the application where the actors name will go
-            </p>
             </div>   
             );
         }
-    
-        searchForm(){
-            return(
-                <div className = "searchForm">
-                   <GetActors/>
-                </div>
-            );
-        }
-    
-        
-        handleSearchByName(){
-    
-        }
-    
-        handleSearchById(){
-            this.preventDefault();
-            alert("alert")
-            this.getActorById()
-        }
-    
-    
-    
     
         actorInfo(){
             return (
@@ -75,17 +45,19 @@ class Actor extends React.Component{
         }
     
         linkedActors(){
+            const id = this.props.id;
             return (
                 <div className = "linkedActors">
-                    <GetActorsByActor id={"1"} limit={"5"}/>
+                    <GetActorsByActor id={id} limit={5}/>
                 </div>
             );
         }
     
         linkedMovies(){
+            const id = this.props.id;
             return(
                 <div className = "linkedMovies">
-                    <GetMoviesByActor id={"2"} limit={"3"}/>
+                    <GetMoviesByActor id={id} limit={5}/>
                 </div>
             );
         }
@@ -143,7 +115,6 @@ function GetMoviesByActor(input){
     const GetApi = async ()=> {
       const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`, {headers});
       const response = await result.json();
-      console.log(response);
       if (!result.ok) {
         const error = (response && response.message) || result.statusText;
         console.error(error)}
@@ -177,7 +148,6 @@ function GetActorsByActor(input){
         const GetApi = async ()=> {
           const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/actorsByActorLimited/${Id}:${Actors}`, {headers});
           const response = await result.json();
-          console.log(response);
           if (!result.ok) {
             const error = (response && response.message) || result.statusText;
             console.error(error)}
@@ -195,5 +165,36 @@ function GetActorsByActor(input){
             ))
         );
         }
+
+function GetActor(input){
+        const[id, StoreId] = useState(input.id)
+        const[ReturnData, StoreData] = useState([]);    
+        console.log(`https://sakila-1668596751992.azurewebsites.net/home/allActors/${id}`)   
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+        }
+        
+        const GetApi = async ()=> {
+            const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/allActors/${id}`, {headers});
+            const response = await result.json();
+            if (!result.ok) {
+            const error = (response && response.message) || result.statusText;
+            console.error(error)}
+            StoreData(response);
+        }
+            useEffect(()=>{
+                GetApi();
+            },[])
+        
+        return (
+                <div>
+                {ReturnData.actorFirstName} {ReturnData.actorLastName}
+                </div>
+
+        );
+        }
+
+
 
 export default Actor;

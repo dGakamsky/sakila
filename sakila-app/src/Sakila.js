@@ -1,6 +1,8 @@
 import './css/Sakila.css';
 import image from './images/default_name._V142442227_UY289_CR46,0,196,289_.jpg';
 import React, { useEffect, useState } from 'react';
+import Actor from './Actor.js';
+import Film from './Film.js';
 
 class Sakila extends React.Component{
     constructor(props){
@@ -139,7 +141,6 @@ function GetMoviesByActor(input){
     const GetApi = async ()=> {
       const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/filmsByActorLimited/${Id}:${Movies}`, {headers});
       const response = await result.json();
-      console.log(response);
       if (!result.ok) {
         const error = (response && response.message) || result.statusText;
         console.error(error)}
@@ -173,7 +174,6 @@ function GetActorsByActor(input){
         const GetApi = async ()=> {
           const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/actorsByActorLimited/${Id}:${Actors}`, {headers});
           const response = await result.json();
-          console.log(response);
           if (!result.ok) {
             const error = (response && response.message) || result.statusText;
             console.error(error)}
@@ -202,7 +202,6 @@ function GetActors(){
             const GetApi = async ()=> {
               const result = await fetch(`https://sakila-1668596751992.azurewebsites.net/home/allActors`, {headers});
               const response = await result.json();
-              console.log(response);
               if (!result.ok) {
                 const error = (response && response.message) || result.statusText;
                 console.error(error)}
